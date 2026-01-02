@@ -9,7 +9,7 @@ import Link from "next/link";
 export const AboutMe: NextPage = () => {
     const pathName = usePathname()
   return (
-        <article className={`w-full flex flex-col gap-4 items-center px-2 ${pathName === "/about " ? " bg-stone-950  py-14 md:gap-6" : "pt-3 pb-7  bg-stone-900/50 "}`}>
+        <article className={`w-full flex flex-col gap-4 items-center px-2 ${pathName === "/about " ? " bg-stone-950  py-14 md:gap-6 lg:pt-28" : "pt-3 pb-7  bg-stone-900/50 "}`}>
             
             <h4 className={`font-semibold text-2xl md:text-3xl md:pb-4  ${pathName === "/about" ? "pt-4 md:pt-20" : "pt-2"}`}>About <span className="text-orange-500">Me</span></h4>
             <div className="w-36 h-36 md:w-40 md:h-40 md:mb-4"><ProfileCard/></div>

@@ -28,7 +28,7 @@ export const ProjectsHome: NextPage = () => {
     return (
         <div className="w-full pb-4 relative md:w-[90%] mx-auto lg:w-full">
             <h3 className="font-semibold text-2xl text-center py-2 md:text-3xl">My <span className="text-orange-500">Portfolio</span></h3>
-            <section  className="w-full flex justify-center pt-2 mx-auto lg:gap-8 xl:gap-12 lg:w-[78%]">
+            <section  className="w-[80%] flex justify-center pt-2 mx-auto lg:gap-8 xl:gap-12 lg:w-[78%]">
                 {visibleProjects.map((project) => (
                      <Card key={project.id}
                      imgUrl={project.imgUrl}

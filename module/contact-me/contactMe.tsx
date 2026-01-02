@@ -2,6 +2,9 @@
 import { NextPage } from "next";
 import { Button } from "@/component/ui/Button";
 import { useForm } from "react-hook-form";
+import { ReactEventHandler, useRef } from "react"
+import { SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser"
 
 type ContactFormProps = {
     fullName: "string",
@@ -10,12 +13,27 @@ type ContactFormProps = {
 }
    
 export const ContactMe: NextPage = () => {
-   const {register, handleSubmit, formState: {errors},} = useForm<ContactFormProps>()
-   const onSubmit = (data: ContactFormProps) => {
-       
+   const {register, handleSubmit, reset, formState: {errors},} = useForm<ContactFormProps>()
+   const sendMsg: SubmitHandler<ContactFormProps> = async (data) => {
+      try {
+        await emailjs.send(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,{
+                fullName: data.fullName,
+                email: data.email,
+                message: data.message
+            },
+            process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        )
+        alert("Message sent successfully!");
+        reset();
+      }catch(error){
+        console.error(error)
+       alert("Failed to send message")
+      }
    }
     return (
-        <div className="bg-stone-950 pt-20 pb-7 px-2 w-full">
+        <div className="bg-stone-950 pt-20 pb-7 px-2 w-full lg:pt-28">
             
             <section className="backdrop-blur-md bg-white/10 w-[95%] mx-auto rounded-2xl shadow-2xl/50 shadow-orange-500 p-2 hover:scale-105 transition transform md:w-[80%] md:mt-7
             lg:w-[65%]">
@@ -23,7 +41,7 @@ export const ContactMe: NextPage = () => {
                     <h3 className="text-center text-2xl font-semibold py-2 md:text-3xl">Contact <span className="text-orange-500">Me</span></h3>
                     <p className="text-center font-medium text-md p-2 tracking-wide md:text-xl ">Let's make your project your reality. Feel free to contact me at anytime.</p>
                 </div>
-                <form className="w-full flex flex-col gap-4 items-center justify-center py-4">
+                <form onSubmit={handleSubmit(sendMsg)} className="w-full flex flex-col gap-4 items-center justify-center py-4">
                     <div className="w-full flex flex-col items-center ">
                         <input type="text" {...register("fullName", {required: "Your full name is required!"})}
                          placeholder="Enter your Full Name" className="rounded-xl bg-stone-100 px-6 w-72 py-2 border-2 border-orange-600 mx-auto text-black

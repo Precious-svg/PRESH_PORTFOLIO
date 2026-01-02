@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export const ProjectMe: NextPage = () => {
     const pathName = usePathname()
     return (
-        <div className={`w-full pb-7 flex flex-col gap-4 mx-auto items-center justify-center px-2  bg-stone-950  ${pathName === "/projects" ? " pt-14" : "pt-3"}`}>
+        <div className={`w-full pb-7 flex flex-col gap-4 mx-auto items-center justify-center px-2  bg-stone-950  ${pathName === "/projects" ? " pt-14 lg:28" : "pt-3"}`}>
             <div className="flex flex-col items-center md:pt-4">
                 <h4 className="font-semibold text-2xl pt-2 text-center md:text-3xl">
                     My <span className="text-orange-500">Portfolio</span>
