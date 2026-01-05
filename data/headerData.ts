@@ -28,7 +28,7 @@ export const socialLink = [
     },
     {
         title: "Linkeldn",
-        href: "https://github.com/Precious-svg",
+        href: "https://www.linkedin.com/in/precious-ogwezhi-39a4a8201?utm_source=share&utm_cam-paign=share_via&utm_content=profile&utm_medium=ios_app",
         icon: FaLinkedin
     },
 
