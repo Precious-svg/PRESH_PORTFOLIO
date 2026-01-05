@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { ReactEventHandler, useRef } from "react"
 import { SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser"
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type ContactFormProps = {
     fullName: "string",
@@ -12,9 +14,19 @@ type ContactFormProps = {
     message: "string"
 }
    
-export const ContactMe: NextPage = () => {
+export const ContactMe  = () => {
+    const router = useRouter();
+    const [isMounted, setIsMounted] = useState(false);
    const {register, handleSubmit, reset, formState: {errors},} = useForm<ContactFormProps>()
+
+   useEffect(() => {
+    setIsMounted(true); // Now we know we are on the client side
+  }, []);
+
+  if (!isMounted) return <div>not mounted</div>
    const sendMsg: SubmitHandler<ContactFormProps> = async (data) => {
+
+    console.log("message data:", data)
       try {
         await emailjs.send(
             process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -27,8 +39,9 @@ export const ContactMe: NextPage = () => {
         )
         alert("Message sent successfully!");
         reset();
+        router.push("/")
       }catch(error){
-        console.error(error)
+        console.log(error)
        alert("Failed to send message")
       }
    }
@@ -68,10 +81,12 @@ export const ContactMe: NextPage = () => {
                         </textarea>
                         {errors.message && (<p className="text-md text-red-500 font-medium pt-2 text-left">{errors.message.message}</p>)}
                     </div>
-                </form>
-                <div className="w-72 mx-auto md:w-125">
-                    <Button type="submit" size="md" variant="primary" className="rounded-md mb-4 md:text-xl md:font-medium">Send Message</Button>
+
+                    <div className="w-72 mx-auto md:w-125">
+                      <Button type="submit" size="md" variant="primary" className="rounded-md mb-4 md:text-xl md:font-medium">Send Message</Button>
                 </div>
+                </form>
+                
             </section>
         </div>
     )

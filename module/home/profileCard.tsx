@@ -1,7 +1,8 @@
-import { NextPage } from "next"
+
 import Image from "next/image"
 import ProfilePic from "@public/assets/images/profile-pic.jpeg"
-export const ProfileCard: NextPage = () => {
+
+export const ProfileCard = () => {
   return (
     
      <div className="w-full h-full rounded-full  shadow-2xl/50 shadow-orange-200 border-2 border-orange-700 flex justify-center items-center bg-stone-100">

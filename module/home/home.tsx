@@ -1,9 +1,9 @@
-import { NextPage } from "next"
+
 import { ProfileCard } from "./profileCard"
 import { Button } from "@/component/ui/Button"
 import { socialLink } from "@/data/headerData"
 import Link from "next/link"
-export const Home : NextPage = () => {
+export const Home = () => {
     return (
         
       <div className="flex flex-col justify-center items-center gap-5 w-[90%] px-2 pt-14 pb-7 bg-stone-950 mx-auto md:pt-28 lg:flex-row lg:justify-between lg:pt-24 lg:w-full lg:px-6">

@@ -1,10 +1,10 @@
 "use client"
-import { NextPage } from "next"
 import { useState } from "react"
 import { Card } from "@/component/ui/Card"
 import { projectsData } from "@/data/projectsData"
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
-export const ProjectsHome: NextPage = () => {
+
+export const ProjectsHome = () => {
     const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
     const currentProject = projectsData[currentProjectIndex]
 

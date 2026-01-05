@@ -1,10 +1,9 @@
 "use client"
-import { NextPage } from "next";
 import { projectsData } from "@/data/projectsData";
 import { Card } from "@/component/ui/Card";
 import { usePathname } from "next/navigation";
 
-export const ProjectMe: NextPage = () => {
+export const ProjectMe = () => {
     const pathName = usePathname()
     return (
         <div className={`w-full pb-7 flex flex-col gap-4 mx-auto items-center justify-center px-2  bg-stone-950  ${pathName === "/projects" ? " pt-14 lg:28" : "pt-3"}`}>

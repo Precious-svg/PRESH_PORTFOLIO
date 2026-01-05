@@ -1,12 +1,12 @@
 
 "use client"
-import { NextPage } from "next";
+
 import { ProfileCard } from "../home";
 import { Button } from "@/component/ui/Button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-export const AboutMe: NextPage = () => {
+export const AboutMe = () => {
     const pathName = usePathname()
   return (
         <article className={`w-full flex flex-col gap-4 items-center px-2 ${pathName === "/about " ? " bg-stone-950  py-14 md:gap-6 lg:pt-28" : "pt-3 pb-7  bg-stone-900/50 "}`}>

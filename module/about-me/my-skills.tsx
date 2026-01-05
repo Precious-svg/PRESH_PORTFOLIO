@@ -1,7 +1,7 @@
-import { NextPage } from "next";
+
 import { skillsPercent } from "@/data/skillsRange";
 
-export const MySkills: NextPage = () => {
+export const MySkills = () => {
     return(
          <article className="w-full py-7">
             <h3 className="font-semibold text-2xl text-center md:text-3xl">My <span className="text-orange-500">Skills</span></h3>
